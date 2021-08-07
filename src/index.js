@@ -5,10 +5,10 @@ const jwt = require('jsonwebtoken');
 const unless = require('express-unless');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
-const service = require('./service');
+const categoria = require('./categorias');
 app.use(express.json());
 app.use(cors());
-
+app.use('/categoria', categoria);
 const PORT = process.env.PORT ? process.env.PORT : 3000;
 
 

@@ -1,3 +1,4 @@
+
 var mysql = require('mysql');
 const util = require('util');
 var conexion = mysql.createConnection({
@@ -8,51 +9,79 @@ var conexion = mysql.createConnection({
 });
 conexion.connect();
 const query = util.promisify(conexion.query).bind(conexion);
-function categoria_agregar() {
+async function categoria_agregar(req, res) {
+  try {
+    if (!req.body.categoria) {
+      throw new Error("Debe ingresar una categoria");
+    }
+    const validacion = await query("select * from categrorias where categoria=?", [req.body.categoria]);
+    if (validacion.length > 0) {
+      throw new Error("Ya existe la categoria");
+    }
+    await query("insert into categrorias (categoria) values (?)",
+    [req.body.categoria]);
+    res.send({message: "categoria agregada con exito"});
+    }catch (e) {
+    //res.send("error fatal");
+    res.status(403).send({ message: e.message});
+    }
+  }
+async function categorias_mostrar(req, res) {
+  try {
+    const consulta = await query("select * from categrorias");
+    return consulta;
+  } catch (e) {
+    res.status(403).send({ message: e.message});
+  }
+}
+async function categoria_mostrar(req, res) {
+  try {
+    const consulta = await query("select * from categrorias where id=?", [req.params.id]);
+    if (consulta.length == 0) {
+      res.send({message: "la categoria no existe"});
+    }else {
+      return consulta[0];
+    }
+  } catch (e) {
+    res.status(403).send({ message: e.message});
+  }
+}
+async function categoria_borrar(req, res) {
 
 }
-function categorias_mostrar() {
+async function persona_agregar(req, res) {
 
 }
-function categoria_mostrar() {
+async function personas_mostrar(req, res) {
 
 }
-function categoria_borrar() {
+async function persona_mostrar(req, res) {
 
 }
-function persona_agregar() {
+async function persona_modificar(req, res) {
 
 }
-function personas_mostrar() {
+async function persona_borrar(req, res) {
+}
+async function libro_agregar(req, res) {
 
 }
-function persona_mostrar() {
+async function libros_mostrar(req, res) {
 
 }
-function persona_modificar() {
+async function libro_mostrar(req, res) {
 
 }
-function persona_borrar() {
-}
-function libro_agregar() {
+async function libro_modificar(req, res) {
 
 }
-function libros_mostrar() {
+async function libro_prestar(req, res) {
 
 }
-function libro_mostrar() {
+async function libro_devolver(req, res) {
 
 }
-function libro_modificar() {
-
-}
-function libro_prestar() {
-
-}
-function libro_devolver() {
-
-}
-function libro_borrar() {
+async function libro_borrar(req, res) {
 
 }
 module.exports ={

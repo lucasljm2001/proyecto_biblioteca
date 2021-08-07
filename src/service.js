@@ -1,51 +1,51 @@
 const model = require('./model');
-function categoria_agregar() {
-  return model.categoria_agregar();
+function categoria_agregar(req, res) {
+  return model.categoria_agregar(req, res);
 }
-function categorias_mostrar(){
-  return model.categorias_mostrar();
+function categorias_mostrar(req, res){
+  return model.categorias_mostrar(req, res);
 }
-function categoria_mostrar() {
-  return model.categoria_mostrar();
+function categoria_mostrar(req, res) {
+  return model.categoria_mostrar(req, res);
 }
-function categoria_borrar() {
-  return model.categoria_borrar();
+function categoria_borrar(req, res) {
+  return model.categoria_borrar(req, res);
 }
-function persona_agregar() {
-  return model.persona_agregar();
+function persona_agregar(req, res) {
+  return model.persona_agregar(req, res);
 }
-function personas_mostrar() {
-  return model.personas_mostrar();
+function personas_mostrar(req, res) {
+  return model.personas_mostrar(req, res);
 }
-function persona_mostrar() {
-  return model.persona_mostrar();
+function persona_mostrar(req, res) {
+  return model.persona_mostrar(req, res);
 }
-function persona_modificar() {
-  return model.persona_modificar();
+function persona_modificar(req, res) {
+  return model.persona_modificar(req, res);
 }
-function persona_borrar() {
-  return model.persona_borrar();
+function persona_borrar(req, res) {
+  return model.persona_borrar(req, res);
 }
-function libro_agregar() {
-  return model.libro_agregar();
+function libro_agregar(req, res) {
+  return model.libro_agregar(req, res);
 }
-function libros_mostrar() {
-  return model.libros_mostrar();
+function libros_mostrar(req, res) {
+  return model.libros_mostrar(req, res);
 }
-function libro_mostrar() {
-  return model.libro_mostrar();
+function libro_mostrar(req, res) {
+  return model.libro_mostrar(req, res);
 }
-function libro_modificar() {
-  return model.libro_modificar();
+function libro_modificar(req, res) {
+  return model.libro_modificar(req, res);
 }
-function libro_prestar() {
-  return model.libro_prestar();
+function libro_prestar(req, res) {
+  return model.libro_prestar(req, res);
 }
-function libro_devolver() {
-  return model.libro_devolver();
+function libro_devolver(req, res) {
+  return model.libro_devolver(req, res);
 }
-function libro_borrar() {
-  return model.libro_borrar(); 
+function libro_borrar(req, res) {
+  return model.libro_borrar(req, res);
 }
 module.exports ={
   categoria_agregar,
